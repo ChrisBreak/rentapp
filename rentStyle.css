@@ -7,9 +7,15 @@ body {
   font-size: 24px;
   font-family: arial narrow, sans-serif, serif;
   color: #004466;
+  margin-bottom: 20px;
+}
+
+.proInfo {
+  width: 300px;
 }
 
 .label {
+  text-align: left;
   font-size: 18px;
   color: #696969;
   font-family: sans-serif, serif;
@@ -33,17 +39,10 @@ input {
 
 @media (min-width: 580px) {
 
-  .proInfo {
-    margin-left: 100px;
-  }
 
 }
 
 @media (min-width: 740px) {
-
-  .proInfo {
-    margin-left: 200px;
-  }
 
   .topBar{
     font-size: 30px;
@@ -53,16 +52,10 @@ input {
 
 @media (min-width: 900px) {
 
-  .proInfo {
-    margin-left: 300px;
-  }
 
 }
 
 @media (min-width: 1200px) {
 
-  .proInfo {
-    margin-left: 400px;
-  }
 
 }
