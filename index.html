@@ -2,27 +2,31 @@
 <html lang="en">
   <head>
       <meta charset="UTF-8">
-      <title>Lotto 6/49 Gen</title>
-      <link rel="stylesheet" type="text/css" href="lottoGen.css" />
-      <script type="text/javascript" src="649History.js"></script>
-      <script type="text/javascript" src="lotto649.js"></script>
+      <title>Property Analysis</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="rentStyle.css" />
+      <script type="text/javascript" src="rentApp.js"></script>
   </head>
-  <body style="background-color: #005090;">
-    <div class="topBar">Lotto 6/49 Sequence Generator</div>
-    <div class="instructStep">
-      <span>Click the Generate button to get a list of potential winning numbers for the Lotto 6/49!</span>
+  <body>
+    <div class="topBar">Buy & Hold Analysis</div>
+    <!--make progress bar here-->
+
+    <div class="proInfo">
+      <div class="label">Report Title</div>
+      <input id="reptitle"/>
+      <div class="label">Property Address</div>
+      <input id="proAddress"/>
+      <div class="label">Property City</div>
+      <input id="proCity"/>
+      <div class="label">Property Province</div>
+      <input id="proProvince"/>
+      <div class="label">Annual Property Taxes</div>
+      <input id="proAnnualTaxes"/>
     </div>
-    <div class="genBDiv">
-      <button id="genButton">Generate</button>
+
+    <div class="bottomBar">
+      <button type="button" class="btn btn-success">Next</button>
     </div>
-    <center>
-      <div class="genDisplay">
-        <div id="genList">
-          00 00 00 00 00 00<br>
-          00 00 00 00 00 00<br>
-          00 00 00 00 00 00
-        </div>
-      </div>
-    </center>
+
   </body>
 </html>

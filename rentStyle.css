@@ -1,0 +1,63 @@
+body {
+  margin-left: 40px;
+}
+
+.topBar {
+  text-align: center;
+  font-size: 30px;
+  padding: 40px;
+  font-family: arial narrow, sans-serif, serif;
+  color: #004466;
+}
+
+.label {
+  font-size: 18px;
+  color: #696969;
+  font-family: sans-serif, serif;
+}
+
+input {
+  margin-top: 8px;
+  margin-bottom: 20px;
+  width: 300px;
+  height: 28px;
+  font-size: 16px;
+}
+
+.bottomBar {
+  margin-top: 20px;
+  text-align: center;
+}
+
+
+@media (min-width: 580px) {
+
+  .proInfo {
+    margin-left: 100px;
+  }
+
+}
+
+@media (min-width: 740px) {
+
+  .proInfo {
+    margin-left: 200px;
+  }
+
+}
+
+@media (min-width: 900px) {
+
+  .proInfo {
+    margin-left: 300px;
+  }
+
+}
+
+@media (min-width: 1200px) {
+
+  .proInfo {
+    margin-left: 400px;
+  }
+
+}
