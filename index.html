@@ -12,49 +12,58 @@
     <div class="topBar">Buy & Hold Analysis</div>
     <!--make progress bar here-->
 
+    <div class="container">
+      <div class="row">
+        <div class="col"> </div>
+
+        <div class="col">
+          <div class="inFields" id="proInfo">
+            <div class="label">Report Title</div>
+            <input id="reptitle"/>
+            <div class="label">Property Address</div>
+            <input id="proAddress"/>
+            <div class="label">Property City</div>
+            <input id="proCity"/>
+            <div class="label">Property Province</div>
+            <input id="proProvince"/>
+            <div class="label">Annual Property Taxes</div>
+            <input id="proAnnualTaxes" placeholder="$" class="shortIn"/>
+          </div>
+
+          <div class="inFields" id="purchInfo">
+            <div class="label">Purchase Price</div>
+            <input id="purPrice"/>
+            <div class="label">After Repair Value</div>
+            <input id="aftRepValue"/>
+            <div class="label">Purchase Closing Cost</div>
+            <input id="purCloseCost"/>
+            <div class="label">Estimated Repair Cost</div>
+            <input id="estRepCost"/>
+            <div class="label">Downpayment of Purchase Price</div>
+            <input id="downPercent"/>
+            <div class="label">Loan Interest Rate</div>
+            <input id="loanRate"/>
+            <div class="label">Points charged by lender</div>
+            <input id="pointsLender"/>
+            <div class="label">Other charges from lender</div>
+            <input id="otherLender"/>
+            <div class="label">Amortized Over How Many Years?</div>
+            <input id="amortYears"/>
+          </div>
+
+          <div class="inFields" id="rentInfo">
+            <div class="label">Total Gross Monthly Rent</div>
+            <input id="grossMonthRent"/>
+            <div class="label">Other Monthly Income</div>
+            <input id="otherMonthIn"/>
+
+          </div>
+        </div>
+        <div class="col"> </div>
+
+      </div>
+    </div>
     <center>
-      <div class="inFields" id="proInfo">
-        <div class="label">Report Title</div>
-        <input id="reptitle"/>
-        <div class="label">Property Address</div>
-        <input id="proAddress"/>
-        <div class="label">Property City</div>
-        <input id="proCity"/>
-        <div class="label">Property Province</div>
-        <input id="proProvince"/>
-        <div class="label">Annual Property Taxes</div>
-        <input id="proAnnualTaxes"/>
-      </div>
-
-      <div class="inFields" id="purchInfo">
-        <div class="label">Purchase Price</div>
-        <input id="purPrice"/>
-        <div class="label">After Repair Value</div>
-        <input id="aftRepValue"/>
-        <div class="label">Purchase Closing Cost</div>
-        <input id="purCloseCost"/>
-        <div class="label">Estimated Repair Cost</div>
-        <input id="estRepCost"/>
-        <div class="label">Downpayment of Purchase Price</div>
-        <input id="downPercent"/>
-        <div class="label">Loan Interest Rate</div>
-        <input id="loanRate"/>
-        <div class="label">Points charged by lender</div>
-        <input id="pointsLender"/>
-        <div class="label">Other charges from lender</div>
-        <input id="otherLender"/>
-        <div class="label">Amortized Over How Many Years?</div>
-        <input id="amortYears"/>
-      </div>
-
-      <div class="inFields" id="rentInfo">
-        <div class="label">Total Gross Monthly Rent</div>
-        <input id="grossMonthRent"/>
-        <div class="label">Other Monthly Income</div>
-        <input id="otherMonthIn"/>
-
-      </div>
-
       <div class="bottomBar">
         <button type="button" class="btn btn-success" id="backB">Back</button>
         <button type="button" class="btn btn-success" id="nextB">Next</button>
