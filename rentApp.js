@@ -1,4 +1,4 @@
-let pages = ["proInfo", "purchInfo", "rentInfo"];
+let pages = ["proInfo", "purchInfo", "rentInfo", "results"];
 let nextButton, backButton, currentP;
 
 function changePage(page) {
@@ -23,14 +23,20 @@ window.onload = function() {
     }
     else if (currentP === "purchInfo") {
       changePage("rentInfo");
+    }
+    else if (currentP === "rentInfo") {
+      changePage("results");
       nextButton.style.display = "none";
     }
   }
 
   backButton.onclick = function() {
-    if (currentP === "rentInfo") {
-      changePage("purchInfo");
+    if (currentP === "results") {
+      changePage("rentInfo");
       nextButton.style.display = "inline-block";
+    }
+    else if (currentP === "rentInfo") {
+      changePage("purchInfo");
     }
     else if (currentP === "purchInfo") {
       changePage("proInfo");

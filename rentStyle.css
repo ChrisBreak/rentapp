@@ -35,6 +35,10 @@ button {
   width: 260px;
 }
 
+#monthProTax {
+  
+}
+
 @media (min-width: 580px) {
 
 
@@ -46,7 +50,7 @@ button {
     font-size: 30px;
   }
   #proInfo, #purchInfo, #rentInfo {
-    width: 300px;
+    width: 340px;
   }
 
 }
