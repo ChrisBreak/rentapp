@@ -27,17 +27,12 @@ body {
   margin-top: 20px;
 }
 
-.bottomBar {
-  margin-top: 20px;
-  text-align: center;
-}
-
 button {
-  margin: 5px;
+  margin: 30px 6px;
 }
 
 #proInfo, #purchInfo, #rentInfo {
-  width: 300px;
+  width: 260px;
 }
 
 @media (min-width: 580px) {
