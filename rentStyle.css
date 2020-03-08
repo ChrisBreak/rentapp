@@ -7,7 +7,7 @@ body {
   font-size: 24px;
   font-family: arial narrow, sans-serif, serif;
   color: #004466;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .label {
@@ -33,10 +33,14 @@ button {
 
 #proInfo, #purchInfo, #rentInfo {
   width: 260px;
+  margin-top: 50px;
 }
 
-#monthProTax {
-  
+progress {
+  margin-top: 70px;
+  margin-left: -50px;
+  width: 130px;
+  transform: rotate(90deg);
 }
 
 @media (min-width: 580px) {
