@@ -45,6 +45,9 @@ button {
   .topBar{
     font-size: 30px;
   }
+  #proInfo, #purchInfo, #rentInfo {
+    width: 300px;
+  }
 
 }
 
