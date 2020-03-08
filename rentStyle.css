@@ -10,7 +10,7 @@ body {
   margin-bottom: 20px;
 }
 
-.proInfo {
+.inFields {
   width: 300px;
 }
 
@@ -34,6 +34,10 @@ input {
 .bottomBar {
   margin-top: 20px;
   text-align: center;
+}
+
+button {
+  margin: 5px;
 }
 
 
