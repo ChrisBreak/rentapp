@@ -17,7 +17,7 @@
         <div class="col"> </div>
 
         <div class="col">
-          <div class="inFields" id="proInfo">
+          <div id="proInfo">
             <div class="label">Report Title</div>
             <input id="reptitle"/>
             <div class="label">Property Address</div>
@@ -27,35 +27,67 @@
             <div class="label">Property Province</div>
             <input id="proProvince"/>
             <div class="label">Annual Property Taxes</div>
-            <input id="proAnnualTaxes" placeholder="$" class="shortIn"/>
+            <div>
+              <span class="inIcon">$</span>
+              <input id="proAnnualTaxes" class="shortIn"/>
+            </div>
           </div>
 
-          <div class="inFields" id="purchInfo">
+          <div id="purchInfo">
             <div class="label">Purchase Price</div>
-            <input id="purPrice"/>
+            <div>
+              <span class="inIcon">$</span>
+              <input id="purPrice" class="shortIn"/>
+            </div>
             <div class="label">After Repair Value</div>
-            <input id="aftRepValue"/>
+            <div>
+              <span class="inIcon">$</span>
+              <input id="aftRepValue" class="shortIn"/>
+            </div>
             <div class="label">Purchase Closing Cost</div>
-            <input id="purCloseCost"/>
+            <div>
+              <span class="inIcon">$</span>
+              <input id="purCloseCost" class="shortIn"/>
+            </div>
             <div class="label">Estimated Repair Cost</div>
-            <input id="estRepCost"/>
+            <div>
+              <span class="inIcon">$</span>
+              <input id="estRepCost" class="shortIn"/>
+            </div>
+            <div class="label2">Loan Details</div>
             <div class="label">Downpayment of Purchase Price</div>
-            <input id="downPercent"/>
+            <div>
+              <span class="inIcon">%</span>
+              <input id="downPercent" class="shortIn"/>
+            </div>
             <div class="label">Loan Interest Rate</div>
-            <input id="loanRate"/>
+            <div>
+              <span class="inIcon">%</span>
+              <input id="loanRate" class="shortIn"/>
+            </div>
             <div class="label">Points charged by lender</div>
-            <input id="pointsLender"/>
+            <input id="pointsLender" class="shortIn2"/>
             <div class="label">Other charges from lender</div>
-            <input id="otherLender"/>
+            <div>
+              <span class="inIcon">$</span>
+              <input id="otherLender" class="shortIn"/>
+            </div>
+
             <div class="label">Amortized Over How Many Years?</div>
-            <input id="amortYears"/>
+            <input id="amortYears" class="shortIn2"/>
           </div>
 
-          <div class="inFields" id="rentInfo">
+          <div id="rentInfo">
             <div class="label">Total Gross Monthly Rent</div>
-            <input id="grossMonthRent"/>
+            <div>
+              <span class="inIcon">$</span>
+              <input id="grossMonthRent" class="shortIn"/>
+            </div>
             <div class="label">Other Monthly Income</div>
-            <input id="otherMonthIn"/>
+            <div>
+              <span class="inIcon">$</span>
+              <input id="otherMonthIn" class="shortIn"/>
+            </div>
 
           </div>
         </div>
