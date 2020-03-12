@@ -22,6 +22,8 @@ window.onload = function() {
   changePage("proInfo");
   backButton.style.display = "none";
 
+  //need to grab all inputs...
+
   nextButton.onclick = function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     if (currentP === "proInfo") {
