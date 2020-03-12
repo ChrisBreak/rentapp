@@ -23,6 +23,7 @@ window.onload = function() {
   backButton.style.display = "none";
 
   nextButton.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     if (currentP === "proInfo") {
       changePage("purchInfo");
       backButton.style.display = "inline-block";
@@ -37,6 +38,7 @@ window.onload = function() {
   }
 
   backButton.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     if (currentP === "results") {
       changePage("rentInfo");
       nextButton.style.display = "inline-block";
