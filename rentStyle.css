@@ -10,16 +10,16 @@ body {
   margin-bottom: 25px;
 }
 
-.label {
+.label, .label4, .label5, .label6 {
   text-align: left;
-  font-size: 15px;
-  color: #696969;
+  font-size: 14px;
+  color: #808080;
   font-family: sans-serif, serif;
   margin-bottom: 6px;
   margin-top: 15px;
 }
 
-.label2 {
+.label2, .label3 {
   font-family: arial narrow, sans-serif, serif;
   color: #004466;
   font-size: 20px;
@@ -27,20 +27,63 @@ body {
   margin-top: 20px;
 }
 
+.label3, .label4, .label6 {
+  color: #505050;
+}
+
+.label3, .label4 {
+  margin-bottom: 0px;
+  font-size: 22px;
+}
+
+.label5 {
+  margin-top: 0px;
+}
+
+.label6 {
+  text-align: right;
+}
+
+.tRight {
+  text-align: right;
+}
+
 button {
   margin: 30px 6px;
 }
 
-#proInfo, #purchInfo, #rentInfo {
-  width: 260px;
+#proInfo, #purchInfo, #rentInfo, #results {
+  width: 270px;
   margin-top: 50px;
 }
 
 progress {
-  margin-top: 70px;
-  margin-left: -50px;
-  width: 136px;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 6px;
+  margin-top: 74px;
+  margin-left: -45px;
+  width: 128px;
+  height: 12px;
   transform: rotate(90deg);
+}
+
+progress::-webkit-progress-value {
+  background: #28a745;
+  border-radius: 6px;
+}
+
+progress::-webkit-progress-bar {
+  background: whiteSmoke;
+  border-radius: 6px;
+}
+
+.resTable {
+  width: 100%;
+}
+
+th {
+  font-weight: normal;
 }
 
 @media (min-width: 580px) {
@@ -53,7 +96,7 @@ progress {
   .topBar{
     font-size: 30px;
   }
-  #proInfo, #purchInfo, #rentInfo {
+  #proInfo, #purchInfo, #rentInfo, #results {
     width: 340px;
   }
 
