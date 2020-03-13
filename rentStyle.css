@@ -44,17 +44,36 @@ body {
   text-align: right;
 }
 
-.tRight {
-  text-align: right;
-}
-
 button {
   margin: 30px 6px;
 }
 
+.midContent {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+}
+
+.leftSpace {
+  width: 15%;
+}
+
 #proInfo, #purchInfo, #rentInfo, #results {
-  width: 270px;
-  margin-top: 50px;
+  width: 70%;
+  margin-top: 30px;
+}
+
+.navButtons {
+  text-align: center;
+}
+
+#progressBarRow {
+  display: flex;
+  flex-flow: row;
+}
+
+#barSteps {
+  margin-left: -30px;
 }
 
 progress {
@@ -82,22 +101,87 @@ progress::-webkit-progress-bar {
   width: 100%;
 }
 
+.collection {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.flexItem, .flexItem2 {
+  width: 150px;
+  margin: 0px;
+  margin-right: 15px;
+}
+
+.flexItem2 {
+  width: 320px;
+}
+
 th {
   font-weight: normal;
 }
 
 @media (min-width: 580px) {
 
+  .topBar{
+    font-size: 30px;
+  }
+
+  #progressBarRow {
+    display: block;
+    padding-left: 30%;
+    padding-right: 30%;
+  }
+
+  #progressBar {
+    transform: rotate(0deg);
+    margin-top: 10px;
+    margin-left: 0px;
+    width: 100%;
+  }
+
+  #barSteps {
+    display: flex;
+    flex-flow: row;
+    margin-top: 0px;
+    margin-left: 0px;
+    width: 100%;
+  }
+
+  #proInfoBar, #purchInfoBar, #rentInfoBar, #resultsBar {
+    text-align: center;
+    width: 25%;
+  }
 
 }
 
 @media (min-width: 740px) {
 
-  .topBar{
-    font-size: 30px;
+  .flexItem, .flexItem2 {
+    width: 165px;
+    margin: 0px;
+    margin-right: 40px;
   }
-  #proInfo, #purchInfo, #rentInfo, #results {
-    width: 340px;
+
+  .flexItem2 {
+    width: 320px;
+  }
+
+  .resTable {
+    width: 300px;
+    margin: 0px;
+    margin-right: 40px;
+  }
+
+  .resbottom {
+    display: flex;
+    flex-flow: row;
+  }
+
+  #resCollection {
+    margin-top: -100px;
+    margin-left: 20px;
   }
 
 }

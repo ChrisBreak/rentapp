@@ -8,10 +8,21 @@ function changePage(page) {
   document.getElementById(page).style.display = "block";
   currentP = page;
   document.getElementById(page+"Bar").style.color = "#28a745";
-  if (page === "proInfo") proBar.value = 14;
-  else if (page === "purchInfo") proBar.value = 42;
-  else if (page === "rentInfo") proBar.value = 70;
-  else proBar.value = 100;
+
+  console.log(document.body.clientWidth);
+
+  if (document.body.clientWidth > 580) {
+    if (page === "proInfo") proBar.value = 22;
+    else if (page === "purchInfo") proBar.value = 48;
+    else if (page === "rentInfo") proBar.value = 72;
+    else proBar.value = 100;
+  }
+  else {
+    if (page === "proInfo") proBar.value = 14;
+    else if (page === "purchInfo") proBar.value = 42;
+    else if (page === "rentInfo") proBar.value = 70;
+    else proBar.value = 100;
+  }
 }
 
 

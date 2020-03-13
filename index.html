@@ -11,32 +11,42 @@
   <body>
     <div class="topBar">Buy & Hold Analysis</div>
 
-    <div class="container">
-      <div class="row">
-        <div class="col"> </div>
+    <div id="progressBarRow">
+      <div class="leftSpace"></div>
+      <div>
+        <progress max=100 min=0 id="progressBar"/>
+      </div>
+      <div>
+        <div id="barSteps">
+          <div class="label" id="proInfoBar">Property Info</div>
+          <div class="label" id="purchInfoBar">Purchase Info</div>
+          <div class="label" id="rentInfoBar">Rental Info</div>
+          <div class="label" id="resultsBar">Results</div>
+        </div>
+      </div>
+    </div>
 
-        <div class="col">
-          <div class="row">
-            <div class="col-2">
-              <progress max=100 min=0 id="progressBar"/>
-            </div>
-            <div class="col">
-              <div class="label" id="proInfoBar">Property Info</div>
-              <div class="label" id="purchInfoBar">Purchase Info</div>
-              <div class="label" id="rentInfoBar">Rental Info</div>
-              <div class="label" id="resultsBar">Results</div>
-            </div>
-          </div>
-
-          <div id="proInfo">
+    <div class="midContent">
+      <div class="leftSpace"></div>
+      <div id="proInfo">
+        <div class="collection">
+          <div class="flexItem2">
             <div class="label">Report Title</div>
             <input class="form-control" id="reptitle"/>
+          </div>
+          <div class="flexItem2">
             <div class="label">Property Address</div>
             <input class="form-control" id="proAddress"/>
+          </div>
+          <div class="flexItem2">
             <div class="label">Property City</div>
             <input class="form-control" id="proCity"/>
+          </div>
+          <div class="flexItem">
             <div class="label">Property Province</div>
             <input class="form-control" id="proProvince"/>
+          </div>
+          <div class="flexItem">
             <div class="label">Annual Property Taxes</div>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -45,8 +55,12 @@
               <input type="text" class="form-control" id="proAnnualTaxes">
             </div>
           </div>
+        </div>
+      </div>
 
-          <div id="purchInfo">
+      <div id="purchInfo">
+        <div class="collection">
+          <div class="flexItem">
             <div class="label">Purchase Price</div>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -54,6 +68,8 @@
               </div>
               <input type="text" class="form-control" id="purPrice">
             </div>
+          </div>
+          <div class="flexItem">
             <div class="label">After Repair Value</div>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -61,6 +77,8 @@
               </div>
               <input type="text" class="form-control" id="aftRepValue">
             </div>
+          </div>
+          <div class="flexItem">
             <div class="label">Purchase Closing Cost</div>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -68,6 +86,8 @@
               </div>
               <input type="text" class="form-control" id="purCloseCost">
             </div>
+          </div>
+          <div class="flexItem">
             <div class="label">Estimated Repair Cost</div>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -75,7 +95,11 @@
               </div>
               <input type="text" class="form-control" id="estRepCost">
             </div>
-            <div class="label2">Loan Details</div>
+          </div>
+        </div>
+        <div class="label2">Loan Details</div>
+        <div class="collection">
+          <div class="flexItem">
             <div class="label">Downpayment of Purchase Price</div>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -83,6 +107,8 @@
               </div>
               <input type="text" class="form-control" id="downPercent">
             </div>
+          </div>
+          <div class="flexItem">
             <div class="label">Loan Interest Rate</div>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -90,8 +116,12 @@
               </div>
               <input type="text" class="form-control" id="loanRate">
             </div>
+          </div>
+          <div class="flexItem">
             <div class="label">Points charged by lender</div>
             <input type="text" class="form-control" id="pointsLender"/>
+          </div>
+          <div class="flexItem">
             <div class="label">Other charges from lender</div>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -99,11 +129,17 @@
               </div>
               <input type="text" class="form-control" id="otherLender">
             </div>
+          </div>
+          <div class="flexItem">
             <div class="label">Amortized Over How Many Years?</div>
             <input type="text" class="form-control" id="amortYears"/>
           </div>
+        </div>
+      </div>
 
-          <div id="rentInfo">
+      <div id="rentInfo">
+        <div class="collection">
+          <div class="flexItem">
             <div class="label">Total Gross Monthly Rent</div>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -111,6 +147,8 @@
               </div>
               <input type="text" class="form-control" id="grossMonthRent">
             </div>
+          </div>
+          <div class="flexItem">
             <div class="label">Other Monthly Income</div>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -118,7 +156,11 @@
               </div>
               <input type="text" class="form-control" id="otherMonthIn">
             </div>
-            <div class="label2">Fixed Landlord-Paid Expenses</div>
+          </div>
+        </div>
+        <div class="label2">Fixed Landlord-Paid Expenses</div>
+        <div class="collection">
+          <div class="flexItem">
             <div class="label">Electricity</div>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -126,6 +168,8 @@
               </div>
               <input type="text" class="form-control" id="electrExp">
             </div>
+          </div>
+          <div class="flexItem">
             <div class="label">Water & Sewer</div>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -133,6 +177,8 @@
               </div>
               <input type="text" class="form-control" id="waterNSewExp">
             </div>
+          </div>
+          <div class="flexItem">
             <div class="label">Garbage</div>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -140,6 +186,8 @@
               </div>
               <input type="text" class="form-control" id="garbageExp">
             </div>
+          </div>
+          <div class="flexItem">
             <div class="label">Condo Fees</div>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -147,6 +195,8 @@
               </div>
               <input type="text" class="form-control" id="condoFeeExp">
             </div>
+          </div>
+          <div class="flexItem">
             <div class="label">Monthly Insurance</div>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -154,6 +204,8 @@
               </div>
               <input type="text" class="form-control" id="monthInsurExp">
             </div>
+          </div>
+          <div class="flexItem">
             <div class="label">Other Monthly Expenses</div>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -161,6 +213,8 @@
               </div>
               <input type="text" class="form-control" id="monthOtherExp">
             </div>
+          </div>
+          <div class="flexItem">
             <div class="label">Monthly Property Taxes</div>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -168,7 +222,11 @@
               </div>
               <input type="text" class="form-control" id="monthProTax" readonly>
             </div>
-            <div class="label2">Variable Landlord-Paid Expenses</div>
+          </div>
+        </div>
+        <div class="label2">Variable Landlord-Paid Expenses</div>
+        <div class="collection">
+          <div class="flexItem">
             <div class="label">Vacancy</div>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -176,6 +234,8 @@
               </div>
               <input type="text" class="form-control" id="vacancyPer">
             </div>
+          </div>
+          <div class="flexItem">
             <div class="label">Repairs and Maintenance</div>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -183,6 +243,8 @@
               </div>
               <input type="text" class="form-control" id="repNMainPer">
             </div>
+          </div>
+          <div class="flexItem">
             <div class="label">Management Fees</div>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -191,139 +253,107 @@
               <input type="text" class="form-control" id="manageFee">
             </div>
           </div>
+        </div>
+      </div>
 
-          <div id="results">
-            <div class="label2">Results</div>
-            <div class="label3" id="resAddress">1234 Somewhere SW, Calgary, AB</div>
-            <div class="label4" id="resPurchPrice">$137,000</div>
-            <div class="label5">PURCHASE PRICE</div>
-            <br>
-            <table class="resTable">
-              <tbody>
-                <tr>
-                  <th class="label5">Purchase Closing Costs</th>
-                  <th class="label6">$1,500.00</th>
-                </tr>
-                <tr>
-                  <th class="label5">Estimated Repairs</th>
-                  <th class="label6">$5,000.00</th>
-                </tr>
-                <tr>
-                  <th class="label5">Total Project Cost</th>
-                  <th class="label6">$143,500.00</th>
-                </tr>
-                <tr>
-                  <th class="label5">After Repair Value</th>
-                  <th class="label6">$175,000.00</th>
-                </tr>
-                <tr height=10px></tr>
-                <tr>
-                  <th class="label5">Downpayment</th>
-                  <th class="label6">$27,400.00</th>
-                </tr>
-                <tr>
-                  <th class="label5">Loan Amount</th>
-                  <th class="label6">$109,400.00</th>
-                </tr>
-                <tr>
-                  <th class="label5">Loan Points</th>
-                  <th class="label6">$0.00</th>
-                </tr>
-                <tr>
-                  <th class="label5">Amortized Over</th>
-                  <th class="label6">25 years</th>
-                </tr>
-                <tr>
-                  <th class="label5">Loan Interest Rate</th>
-                  <th class="label6">2.700%</th>
-                </tr>
-                <tr>
-                  <th class="label5">Monthly P&I</th>
-                  <th class="label6">$520.00</th>
-                </tr>
-                <tr>
-                  <th class="label5">Total Cash Needed</th>
-                  <th class="label6">$33,900.00</th>
-                </tr>
-                <tr height=10px></tr>
-                <tr>
-                  <th>
-                    <div class="label4" id="resMonthIn">$960.00</div>
-                  </th>
-                  <th>
-                    <div class="label4 tRight" id="resMonthEx">$800.90</div>
-                  </th>
-                </tr>
-                <tr>
-                  <th>
-                    <div class="label5">MONTHLY INCOME</div>
-                  </th>
-                  <th>
-                    <div class="label5 tRight">MONTHLY EXPENSES</div>
-                  </th>
-                </tr>
-                <tr>
-                  <th>
-                    <div class="label4" id="resMonthCash">$242.00</div>
-                  </th>
-                  <th>
-                    <div class="label4 tRight" id="resProForma">5.90%</div>
-                  </th>
-                </tr>
-                <tr>
-                  <th>
-                    <div class="label5">MONTHLY CASHFLOW</div>
-                  </th>
-                  <th>
-                    <div class="label5 tRight">PRO FORMA CAP</div>
-                  </th>
-                </tr>
-                <tr>
-                  <th>
-                    <div class="label4" id="resNOI">$8,242.00</div>
-                  </th>
-                  <th>
-                    <div class="label4 tRight" id="resTotalCash">$33,999.00</div>
-                  </th>
-                </tr>
-                <tr>
-                  <th>
-                    <div class="label5">NOI</div>
-                  </th>
-                  <th>
-                    <div class="label5 tRight">TOTAL CASH NEEDED</div>
-                  </th>
-                </tr>
-                <tr>
-                  <th>
-                    <div class="label4" id="resCashROI">8.30%</div>
-                  </th>
-                  <th>
-                    <div class="label4 tRight" id="resCapRate">6.55%</div>
-                  </th>
-                </tr>
-                <tr>
-                  <th>
-                    <div class="label5">CASH ON CASH ROI</div>
-                  </th>
-                  <th>
-                    <div class="label5 tRight">PURCHASE CAP RATE</div>
-                  </th>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+      <div id="results">
+        <div class="label2">Results</div>
+        <div class="label3" id="resAddress">1234 Somewhere SW, Calgary, AB</div>
+        <div class="label4" id="resPurchPrice">$137,000</div>
+        <div class="label5">PURCHASE PRICE</div>
+        <br>
+        <div class="resbottom">
+          <table class="resTable">
+            <tbody>
+              <tr>
+                <th class="label5">Purchase Closing Costs</th>
+                <th class="label6">$1,500.00</th>
+              </tr>
+              <tr>
+                <th class="label5">Estimated Repairs</th>
+                <th class="label6">$5,000.00</th>
+              </tr>
+              <tr>
+                <th class="label5">Total Project Cost</th>
+                <th class="label6">$143,500.00</th>
+              </tr>
+              <tr>
+                <th class="label5">After Repair Value</th>
+                <th class="label6">$175,000.00</th>
+              </tr>
+              <tr height=10px></tr>
+              <tr>
+                <th class="label5">Downpayment</th>
+                <th class="label6">$27,400.00</th>
+              </tr>
+              <tr>
+                <th class="label5">Loan Amount</th>
+                <th class="label6">$109,400.00</th>
+              </tr>
+              <tr>
+                <th class="label5">Loan Points</th>
+                <th class="label6">$0.00</th>
+              </tr>
+              <tr>
+                <th class="label5">Amortized Over</th>
+                <th class="label6">25 years</th>
+              </tr>
+              <tr>
+                <th class="label5">Loan Interest Rate</th>
+                <th class="label6">2.700%</th>
+              </tr>
+              <tr>
+                <th class="label5">Monthly P&I</th>
+                <th class="label6">$520.00</th>
+              </tr>
+              <tr>
+                <th class="label5">Total Cash Needed</th>
+                <th class="label6">$33,900.00</th>
+              </tr>
+            </tbody>
+          </table>
 
-          <div class="row">
-            <div class="col">
-              <button type="button" class="btn btn-success" id="backB">Back</button>
-              <button type="button" class="btn btn-success" id="nextB">Next</button>
+          <div class="collection" id="resCollection">
+            <div class="flexItem">
+              <div class="label4" id="resMonthIn">$960.00</div>
+              <div class="label5">MONTHLY INCOME</div>
+            </div>
+            <div class="flexItem">
+              <div class="label4" id="resMonthEx">$800.90</div>
+              <div class="label5">MONTHLY EXPENSES</div>
+            </div>
+            <div class="flexItem">
+              <div class="label4" id="resMonthCash">$242.00</div>
+              <div class="label5">MONTHLY CASHFLOW</div>
+            </div>
+            <div class="flexItem">
+              <div class="label4" id="resProForma">5.90%</div>
+              <div class="label5">PRO FORMA CAP</div>
+            </div>
+            <div class="flexItem">
+              <div class="label4" id="resNOI">$8,242.00</div>
+              <div class="label5">NOI</div>
+            </div>
+            <div class="flexItem">
+              <div class="label4" id="resTotalCash">$33,999.00</div>
+              <div class="label5">TOTAL CASH NEEDED</div>
+            </div>
+            <div class="flexItem">
+              <div class="label4" id="resCashROI">8.30%</div>
+              <div class="label5">CASH ON CASH ROI</div>
+            </div>
+            <div class="flexItem">
+              <div class="label4" id="resCapRate">6.55%</div>
+              <div class="label5">PURCHASE CAP RATE</div>
             </div>
           </div>
         </div>
-        <div class="col"> </div>
-
       </div>
+    </div>
+
+    <div class="navButtons">
+      <button type="button" class="btn btn-success" id="backB">Back</button>
+      <button type="button" class="btn btn-success" id="nextB">Next</button>
     </div>
 
   </body>
