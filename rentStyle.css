@@ -55,11 +55,11 @@ button {
 }
 
 .leftSpace {
-  width: 15%;
+  width: 8%;
 }
 
 #proInfo, #purchInfo, #rentInfo, #results {
-  width: 70%;
+  width: 84%;
   margin-top: 30px;
 }
 
@@ -182,6 +182,15 @@ th {
   #resCollection {
     margin-top: -100px;
     margin-left: 20px;
+  }
+
+  .leftSpace {
+    width: 12%;
+  }
+
+  #proInfo, #purchInfo, #rentInfo, #results {
+    width: 76%;
+    margin-top: 30px;
   }
 
 }
