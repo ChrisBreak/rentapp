@@ -2,7 +2,7 @@ let pages = ["proInfo", "purchInfo", "rentInfo", "results"];
 let nextButton, backButton, currentP, proBar;
 let reptitle, proAddress, proCity, proProvince, proAnnualTaxes;
 let purchPrice, aftRepValue, purchCloseCost, estRepCost, downPercent, loanRate, pointsLender, amortYears;
-let grossMonthRent, otherMonthIn, electrExp, waterNSewExp, garbageExp, condoFeeExp, monthInsurExp, monthOtherExp, vacancyPer, repNMainPer, manageFee;
+let grossMonthRent, otherMonthIn, electrExp, waterNSewExp, garbageExp, condoFeeExp, monthInsurExp, monthOtherExp, monthProTax, vacancyPer, repNMainPer, manageFee;
 let purchNums = ["purchPrice", "aftRepValue", "purchCloseCost", "estRepCost", "downPercent", "loanRate", "pointsLender", "amortYears"];
 let rentNums = ["grossMonthRent", "otherMonthIn", "electrExp", "waterNSewExp", "garbageExp", "condoFeeExp", "monthInsurExp", "monthOtherExp", "vacancyPer", "repNMainPer", "manageFee"];
 
@@ -32,6 +32,13 @@ function changePage(page) {
 function resetInput(id) {
   document.getElementById(id).style.borderColor = "#D3D3D3";
 }
+
+Number.prototype.toLocaleFixed = function(n) {
+    return this.toLocaleString(undefined, {
+      minimumFractionDigits: n,
+      maximumFractionDigits: n
+    });
+};
 
 
 window.onload = function() {
@@ -79,6 +86,8 @@ window.onload = function() {
       }
       if (!wrongInput) {
         changePage("rentInfo");
+        monthProTax = proAnnualTaxes / 12;
+        document.getElementById("monthProTax").value = monthProTax.toFixed(2);
         resetInput(currentRed);
       }
     }
@@ -108,6 +117,43 @@ window.onload = function() {
         changePage("results");
         resetInput(currentRed);
         nextButton.style.display = "none";
+
+        document.getElementById("resTitle").innerHTML = reptitle;
+        document.getElementById("resAddress").innerHTML = proAddress + ", " + proCity + ", " + proProvince;
+        document.getElementById("resPurchPrice").innerHTML = "$" + purchPrice.toLocaleString();
+        document.getElementById("resPurchCloseCost").innerHTML = "$" + purchCloseCost.toLocaleFixed(2);
+        document.getElementById("resEstRepCost").innerHTML = "$" + estRepCost.toLocaleFixed(2);
+        document.getElementById("resTotalProCost").innerHTML = "$" + (purchPrice+purchCloseCost+estRepCost).toLocaleFixed(2);
+        document.getElementById("resAftRepValue").innerHTML = "$" + aftRepValue.toLocaleFixed(2);
+        let downPay = (purchPrice * (downPercent/100));
+        document.getElementById("resDownpay").innerHTML = "$" + downPay.toLocaleFixed(2);
+        let loanAmount = (purchPrice-downPay);
+        document.getElementById("resLoanAmount").innerHTML = "$" + loanAmount.toLocaleFixed(2);
+        document.getElementById("resAmortYears").innerHTML = amortYears + " years";
+        document.getElementById("resLoanRate").innerHTML = loanRate.toLocaleFixed(2) + "%";
+        let loanMonthRate = ((loanRate/100)/12);
+        let monthNum = amortYears * 12;
+        let toNegExp = Math.pow((loanMonthRate+1), (-monthNum));
+        let oneMinusNegExp = 1 - toNegExp;
+        let monthPI = (loanMonthRate/oneMinusNegExp) * loanAmount;
+        document.getElementById("resMonthPI").innerHTML = "$" + monthPI.toLocaleFixed(2);
+        let totalCash = purchCloseCost + estRepCost + downPay;
+        document.getElementById("resTotalCash").innerHTML = "$" + totalCash.toLocaleFixed(2);
+        let monthIn = grossMonthRent+otherMonthIn;
+        document.getElementById("resMonthIn").innerHTML = "$" + monthIn.toLocaleFixed(2);
+        let fixedExp = electrExp + waterNSewExp + garbageExp + condoFeeExp + monthInsurExp + monthOtherExp + monthProTax;
+        let varExp = ((vacancyPer/100) * grossMonthRent) + ((repNMainPer/100) * grossMonthRent) + ((manageFee/100) * grossMonthRent);
+        let monthExp = monthPI + fixedExp + varExp;
+        document.getElementById("resMonthExp").innerHTML = "$" + monthExp.toLocaleFixed(2);
+        let monthCash = monthIn - monthExp;
+        document.getElementById("resMonthCash").innerHTML = "$" + monthCash.toLocaleFixed(2);
+        let noi = (monthCash - monthProTax) * 12;
+        document.getElementById("resNOI").innerHTML = "$" + noi.toLocaleFixed(2);
+        document.getElementById("resProForma").innerHTML = ((noi/aftRepValue)*100).toLocaleFixed(2) + "%";
+        let cashROI = (monthCash * 12) / totalCash;
+        document.getElementById("resCashROI").innerHTML = (cashROI * 100).toLocaleFixed(2) + "%";
+        let capRate = noi / purchPrice;
+        document.getElementById("resCapRate").innerHTML = (capRate * 100).toLocaleFixed(2) + "%";
       }
     }
   }
