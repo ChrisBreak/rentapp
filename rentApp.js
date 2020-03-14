@@ -29,8 +29,8 @@ function changePage(page) {
   }
 }
 
-function resetInput(input) {
-  input.style.borderColor = "#D3D3D3";
+function resetInput(id) {
+  document.getElementById(id).style.borderColor = "#D3D3D3";
 }
 
 
@@ -40,6 +40,7 @@ window.onload = function() {
   backButton = document.getElementById('backB');
   changePage("proInfo");
   backButton.style.display = "none";
+  var currentRed = "proAnnualTaxes";
 
   nextButton.onclick = function() {
     if (currentP === "proInfo") {
@@ -51,6 +52,7 @@ window.onload = function() {
       if (!isNaN(proAnnualTaxes)) {
         changePage("purchInfo");
         backButton.style.display = "inline-block";
+        resetInput(currentRed);
       }
       else {
         document.getElementById("proAnnualTaxes").style.borderColor = "red";
@@ -70,12 +72,14 @@ window.onload = function() {
       for (var i = 0; i < purchNums.length; i++) {
         if (isNaN(+document.getElementById(purchNums[i]).value)) {
           wrongInput = true;
+          currentRed = purchNums[i];
           document.getElementById(purchNums[i]).style.borderColor = "red";
           break;
         }
       }
       if (!wrongInput) {
         changePage("rentInfo");
+        resetInput(currentRed);
       }
     }
     else if (currentP === "rentInfo") {
@@ -95,12 +99,14 @@ window.onload = function() {
       for (var i = 0; i < rentNums.length; i++) {
         if (isNaN(+document.getElementById(rentNums[i]).value)) {
           wrongInput = true;
+          currentRed = rentNums[i];
           document.getElementById(rentNums[i]).style.borderColor = "red";
           break;
         }
       }
       if (!wrongInput) {
         changePage("results");
+        resetInput(currentRed);
         nextButton.style.display = "none";
       }
     }
