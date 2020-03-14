@@ -1,15 +1,19 @@
 let pages = ["proInfo", "purchInfo", "rentInfo", "results"];
 let nextButton, backButton, currentP, proBar;
+let reptitle, proAddress, proCity, proProvince, proAnnualTaxes;
+let purchPrice, aftRepValue, purchCloseCost, estRepCost, downPercent, loanRate, pointsLender, amortYears;
+let grossMonthRent, otherMonthIn, electrExp, waterNSewExp, garbageExp, condoFeeExp, monthInsurExp, monthOtherExp, vacancyPer, repNMainPer, manageFee;
+let purchNums = ["purchPrice", "aftRepValue", "purchCloseCost", "estRepCost", "downPercent", "loanRate", "pointsLender", "amortYears"];
+let rentNums = ["grossMonthRent", "otherMonthIn", "electrExp", "waterNSewExp", "garbageExp", "condoFeeExp", "monthInsurExp", "monthOtherExp", "vacancyPer", "repNMainPer", "manageFee"];
 
 function changePage(page) {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
   for(var i = 0; i < pages.length; i++) {
     document.getElementById(pages[i]).style.display = "none";
   }
   document.getElementById(page).style.display = "block";
   currentP = page;
   document.getElementById(page+"Bar").style.color = "#28a745";
-
-  console.log(document.body.clientWidth);
 
   if (document.body.clientWidth > 580) {
     if (page === "proInfo") proBar.value = 22;
@@ -25,6 +29,10 @@ function changePage(page) {
   }
 }
 
+function resetInput(input) {
+  input.style.borderColor = "#D3D3D3";
+}
+
 
 window.onload = function() {
   proBar = document.getElementById('progressBar');
@@ -33,25 +41,72 @@ window.onload = function() {
   changePage("proInfo");
   backButton.style.display = "none";
 
-  //need to grab all inputs...
-
   nextButton.onclick = function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
     if (currentP === "proInfo") {
-      changePage("purchInfo");
-      backButton.style.display = "inline-block";
+      reptitle = document.getElementById("reptitle").value;
+      proAddress = document.getElementById("proAddress").value;
+      proCity = document.getElementById("proCity").value;
+      proProvince = document.getElementById("proProvince").value;
+      proAnnualTaxes = +document.getElementById("proAnnualTaxes").value;
+      if (!isNaN(proAnnualTaxes)) {
+        changePage("purchInfo");
+        backButton.style.display = "inline-block";
+      }
+      else {
+        document.getElementById("proAnnualTaxes").style.borderColor = "red";
+      }
     }
     else if (currentP === "purchInfo") {
-      changePage("rentInfo");
+      purchPrice = +document.getElementById("purchPrice").value;
+      aftRepValue = +document.getElementById("aftRepValue").value;
+      purchCloseCost = +document.getElementById("purchCloseCost").value;
+      estRepCost = +document.getElementById("estRepCost").value;
+      downPercent = +document.getElementById("downPercent").value;
+      loanRate = +document.getElementById("loanRate").value;
+      pointsLender = +document.getElementById("pointsLender").value;
+      amortYears = +document.getElementById("amortYears").value;
+
+      var wrongInput = false;
+      for (var i = 0; i < purchNums.length; i++) {
+        if (isNaN(+document.getElementById(purchNums[i]).value)) {
+          wrongInput = true;
+          document.getElementById(purchNums[i]).style.borderColor = "red";
+          break;
+        }
+      }
+      if (!wrongInput) {
+        changePage("rentInfo");
+      }
     }
     else if (currentP === "rentInfo") {
-      changePage("results");
-      nextButton.style.display = "none";
+      grossMonthRent = +document.getElementById("grossMonthRent").value;
+      otherMonthIn = +document.getElementById("otherMonthIn").value;
+      electrExp = +document.getElementById("electrExp").value;
+      waterNSewExp = +document.getElementById("waterNSewExp").value;
+      garbageExp = +document.getElementById("garbageExp").value;
+      condoFeeExp = +document.getElementById("condoFeeExp").value;
+      monthInsurExp = +document.getElementById("monthInsurExp").value;
+      monthOtherExp = +document.getElementById("monthOtherExp").value;
+      vacancyPer = +document.getElementById("vacancyPer").value;
+      repNMainPer = +document.getElementById("repNMainPer").value;
+      manageFee = +document.getElementById("manageFee").value;
+
+      var wrongInput = false;
+      for (var i = 0; i < rentNums.length; i++) {
+        if (isNaN(+document.getElementById(rentNums[i]).value)) {
+          wrongInput = true;
+          document.getElementById(rentNums[i]).style.borderColor = "red";
+          break;
+        }
+      }
+      if (!wrongInput) {
+        changePage("results");
+        nextButton.style.display = "none";
+      }
     }
   }
 
   backButton.onclick = function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
     if (currentP === "results") {
       changePage("rentInfo");
       nextButton.style.display = "inline-block";
