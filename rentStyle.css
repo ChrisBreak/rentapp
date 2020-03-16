@@ -122,6 +122,19 @@ th {
   font-weight: normal;
 }
 
+#pdfButton {
+  margin-top: 0px;
+}
+
+#pdfFrame {
+  width: 80%;
+  height: 520px;
+}
+
+#downTrigger {
+  display: none;
+}
+
 @media (min-width: 580px) {
 
   .topBar{
@@ -152,6 +165,10 @@ th {
   #proInfoBar, #purchInfoBar, #rentInfoBar, #resultsBar {
     text-align: center;
     width: 25%;
+  }
+
+  #pdfFrame {
+    height: 600px;
   }
 
 }
@@ -191,6 +208,10 @@ th {
   #proInfo, #purchInfo, #rentInfo, #results {
     width: 76%;
     margin-top: 30px;
+  }
+
+  #pdfFrame {
+    height: 800px;
   }
 
 }

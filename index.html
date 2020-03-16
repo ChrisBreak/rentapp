@@ -6,6 +6,8 @@
       <title>Property Analysis</title>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
       <link rel="stylesheet" type="text/css" href="rentStyle.css" />
+      <script type="text/javascript" src="pdfkit.standalone.js"></script>
+      <script type="text/javascript" src="blob-stream.js"></script>
       <script type="text/javascript" src="rentApp.js"></script>
   </head>
   <body>
@@ -66,7 +68,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input class="form-control" id="purchPrice" onclick="resetInput(this)">
+              <input class="form-control" id="purchPrice" onclick="resetInput(this.id)">
             </div>
           </div>
           <div class="flexItem">
@@ -75,7 +77,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input class="form-control" id="aftRepValue" onclick="resetInput(this)">
+              <input class="form-control" id="aftRepValue" onclick="resetInput(this.id)">
             </div>
           </div>
           <div class="flexItem">
@@ -84,7 +86,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input class="form-control" id="purchCloseCost" onclick="resetInput(this)">
+              <input class="form-control" id="purchCloseCost" onclick="resetInput(this.id)">
             </div>
           </div>
           <div class="flexItem">
@@ -93,7 +95,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input class="form-control" id="estRepCost" onclick="resetInput(this)">
+              <input class="form-control" id="estRepCost" onclick="resetInput(this.id)">
             </div>
           </div>
         </div>
@@ -105,7 +107,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">%</span>
               </div>
-              <input class="form-control" id="downPercent" onclick="resetInput(this)">
+              <input class="form-control" id="downPercent" onclick="resetInput(this.id)">
             </div>
           </div>
           <div class="flexItem">
@@ -114,12 +116,8 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">%</span>
               </div>
-              <input class="form-control" id="loanRate" onclick="resetInput(this)">
+              <input class="form-control" id="loanRate" onclick="resetInput(this.id)">
             </div>
-          </div>
-          <div class="flexItem">
-            <div class="label">Points charged by lender</div>
-            <input class="form-control" id="pointsLender" onclick="resetInput(this)">
           </div>
           <div class="flexItem">
             <div class="label">Other charges from lender</div>
@@ -127,12 +125,12 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input class="form-control" id="otherLender" onclick="resetInput(this)">
+              <input class="form-control" id="otherLender" onclick="resetInput(this.id)">
             </div>
           </div>
           <div class="flexItem">
             <div class="label">Amortized Over How Many Years?</div>
-            <input class="form-control" id="amortYears" onclick="resetInput(this)">
+            <input class="form-control" id="amortYears" onclick="resetInput(this.id)">
           </div>
         </div>
       </div>
@@ -145,7 +143,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input class="form-control" id="grossMonthRent" onclick="resetInput(this)">
+              <input class="form-control" id="grossMonthRent" onclick="resetInput(this.id)">
             </div>
           </div>
           <div class="flexItem">
@@ -154,7 +152,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input class="form-control" id="otherMonthIn" onclick="resetInput(this)">
+              <input class="form-control" id="otherMonthIn" onclick="resetInput(this.id)">
             </div>
           </div>
         </div>
@@ -166,7 +164,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input class="form-control" id="electrExp" onclick="resetInput(this)">
+              <input class="form-control" id="electrExp" onclick="resetInput(this.id)">
             </div>
           </div>
           <div class="flexItem">
@@ -175,7 +173,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input class="form-control" id="waterNSewExp" onclick="resetInput(this)">
+              <input class="form-control" id="waterNSewExp" onclick="resetInput(this.id)">
             </div>
           </div>
           <div class="flexItem">
@@ -184,7 +182,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input class="form-control" id="garbageExp" onclick="resetInput(this)">
+              <input class="form-control" id="garbageExp" onclick="resetInput(this.id)">
             </div>
           </div>
           <div class="flexItem">
@@ -193,7 +191,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input class="form-control" id="condoFeeExp" onclick="resetInput(this)">
+              <input class="form-control" id="condoFeeExp" onclick="resetInput(this.id)">
             </div>
           </div>
           <div class="flexItem">
@@ -202,7 +200,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input class="form-control" id="monthInsurExp" onclick="resetInput(this)">
+              <input class="form-control" id="monthInsurExp" onclick="resetInput(this.id)">
             </div>
           </div>
           <div class="flexItem">
@@ -211,7 +209,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input class="form-control" id="monthOtherExp" onclick="resetInput(this)">
+              <input class="form-control" id="monthOtherExp" onclick="resetInput(this.id)">
             </div>
           </div>
           <div class="flexItem">
@@ -232,7 +230,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">%</span>
               </div>
-              <input class="form-control" id="vacancyPer" onclick="resetInput(this)">
+              <input class="form-control" id="vacancyPer" onclick="resetInput(this.id)">
             </div>
           </div>
           <div class="flexItem">
@@ -241,7 +239,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">%</span>
               </div>
-              <input class="form-control" id="repNMainPer" onclick="resetInput(this)">
+              <input class="form-control" id="repNMainPer" onclick="resetInput(this.id)">
             </div>
           </div>
           <div class="flexItem">
@@ -250,7 +248,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">%</span>
               </div>
-              <input class="form-control" id="manageFee" onclick="resetInput(this)">
+              <input class="form-control" id="manageFee" onclick="resetInput(this.id)">
             </div>
           </div>
         </div>
@@ -292,10 +290,6 @@
                 <th class="label6" id="resLoanAmount"></th>
               </tr>
               <tr>
-                <th class="label5">Loan Points</th>
-                <th class="label6">$0.00</th>
-              </tr>
-              <tr>
                 <th class="label5">Amortized Over</th>
                 <th class="label6" id="resAmortYears"></th>
               </tr>
@@ -332,7 +326,7 @@
               <div class="label5">NOI</div>
             </div>
             <div class="flexItem">
-              <div class="label4" id="resTotalCash"></div>
+              <div class="label4" id="restotalCashNeed"></div>
               <div class="label5">TOTAL CASH NEEDED</div>
             </div>
             <div class="flexItem">
@@ -352,6 +346,11 @@
       <button type="button" class="btn btn-success" id="backB">Back</button>
       <button type="button" class="btn btn-success" id="nextB">Next</button>
     </div>
+    <div class="navButtons">
+      <button type="button" class="btn btn-dark" id="pdfButton">Download PDF</button>
+    </div>
+    <center><iframe id="pdfFrame"></iframe></center>
+    <a id="downTrigger"></a>
 
   </body>
 </html>
