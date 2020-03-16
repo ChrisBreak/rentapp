@@ -171,6 +171,7 @@ window.onload = function() {
       changePage("rentInfo");
       nextButton.style.display = "inline-block";
       pdfButton.style.display = "none";
+      pdfFrame.style.display = "none";
       document.getElementById("resultsBar").style.color = "#696969";
     }
     else if (currentP === "rentInfo") {
@@ -185,7 +186,6 @@ window.onload = function() {
   }
 
   pdfButton.onclick = function() {
-    //pdfFrame.style.display = "inline-block";
     // create a document and pipe to a blob
     var doc = new PDFDocument();
     var stream = doc.pipe(blobStream());
@@ -222,11 +222,17 @@ window.onload = function() {
     stream.on('finish', function() {
       let blob = stream.toBlob('application/pdf');
       let url = window.URL.createObjectURL(blob);
-      downTrigger.href = url;
-      downTrigger.download = reptitle + ".pdf";
-      downTrigger.click();
-      window.URL.revokeObjectURL(url);
-      //pdfFrame.src = stream.toBlobURL('application/pdf');
+
+      if (document.body.clientWidth < 580) {
+        pdfFrame.src = stream.toBlobURL('application/pdf');
+        pdfFrame.style.display = "inline-block";
+      }
+      else {
+        downTrigger.href = url;
+        downTrigger.download = reptitle + ".pdf";
+        downTrigger.click();
+        window.URL.revokeObjectURL(url);
+      }
     });
   }
 
