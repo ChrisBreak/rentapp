@@ -2,10 +2,10 @@ let pages = ["proInfo", "purchInfo", "rentInfo", "results"];
 let nextButton, backButton, pdfButton, currentP, proBar, pdfFrame, downTrigger;
 let reptitle, proAddress, proCity, proProvince, proAnnualTaxes;
 let purchPrice, aftRepValue, purchCloseCost, estRepCost, downPercent, loanRate, amortYears, totalProCost, downPay, loanAmount;
-let grossMonthRent, otherMonthIn, electrExp, waterNSewExp, garbageExp, condoFeeExp, monthInsurExp, monthOtherExp, monthProTax, vacancyPer, repNMainPer, manageFee;
+let grossMonthRent, otherMonthIn, electrExp, waterNSewExp, garbageExp, condoFeeExp, monthInsurExp, monthOtherExp, monthProTax, vacancyPer, repNMainPer, manageFee, annualCommFee, capitalExp;
 let monthPI, monthIn, monthCash, noi, cashROI, monthExp, proForma, totalCashNeed, capRate;
 let purchNums = ["purchPrice", "aftRepValue", "purchCloseCost", "estRepCost", "downPercent", "loanRate", "amortYears"];
-let rentNums = ["grossMonthRent", "otherMonthIn", "electrExp", "waterNSewExp", "garbageExp", "condoFeeExp", "monthInsurExp", "monthOtherExp", "vacancyPer", "repNMainPer", "manageFee"];
+let rentNums = ["grossMonthRent", "otherMonthIn", "electrExp", "waterNSewExp", "garbageExp", "condoFeeExp", "monthInsurExp", "monthOtherExp", "vacancyPer", "repNMainPer", "manageFee", "annualCommFee", "capitalExp"];
 
 function changePage(page) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -103,11 +103,13 @@ window.onload = function() {
       waterNSewExp = +document.getElementById("waterNSewExp").value;
       garbageExp = +document.getElementById("garbageExp").value;
       condoFeeExp = +document.getElementById("condoFeeExp").value;
+      annualCommFee = +document.getElementById("annualCommFee").value;
       monthInsurExp = +document.getElementById("monthInsurExp").value;
       monthOtherExp = +document.getElementById("monthOtherExp").value;
       vacancyPer = +document.getElementById("vacancyPer").value;
       repNMainPer = +document.getElementById("repNMainPer").value;
       manageFee = +document.getElementById("manageFee").value;
+      capitalExp = +document.getElementById("capitalExp").value;
 
       var wrongInput = false;
       for (var i = 0; i < rentNums.length; i++) {
@@ -148,8 +150,8 @@ window.onload = function() {
         document.getElementById("restotalCashNeed").innerHTML = "$" + totalCashNeed.toLocaleFixed(2);
         monthIn = grossMonthRent+otherMonthIn;
         document.getElementById("resMonthIn").innerHTML = "$" + monthIn.toLocaleFixed(2);
-        let fixedExp = electrExp + waterNSewExp + garbageExp + condoFeeExp + monthInsurExp + monthOtherExp + monthProTax;
-        let varExp = ((vacancyPer/100) * grossMonthRent) + ((repNMainPer/100) * grossMonthRent) + ((manageFee/100) * grossMonthRent);
+        let fixedExp = electrExp + waterNSewExp + garbageExp + condoFeeExp + monthInsurExp + monthOtherExp + monthProTax + (annualCommFee/12);
+        let varExp = ((vacancyPer/100) * grossMonthRent) + ((repNMainPer/100) * grossMonthRent) + ((manageFee/100) * grossMonthRent) + ((capitalExp/100) * grossMonthRent);
         monthExp = monthPI + fixedExp + varExp;
         document.getElementById("resMonthExp").innerHTML = "$" + monthExp.toLocaleFixed(2);
         monthCash = monthIn - monthExp;
@@ -195,7 +197,7 @@ window.onload = function() {
     doc.fontSize(14).font('Helvetica-Oblique').text((proAddress + ", " + proCity + ", " + proProvince), 70, 115);
 
     let labels = "Purchase Closing Costs \nEstimated Repairs \nTotal Project Cost \nAfter Repair Value \n\nDownpayment \nLoan Amount \nAmortized Over \nLoan Interest Rate \nMonthly P&I";
-    let allCaps1 = "MONTHLY INCOME \nMONTHLY CASHFLOW \nNOI \nCASH ON CASH ROI";
+    let allCaps1 = "MONTHLY INCOME \nMONTHLY CASHFLOW \nANNUAL NOI \nCASH ON CASH ROI";
     let allCaps2 = "MONTHLY EXPENSES \nPRO FORMA CAP \nTOTAL CASH NEEDED \nPURCHASE CAP RATE";
     let amounts1 = "$" + purchCloseCost.toLocaleFixed(2) + "\n$" + estRepCost.toLocaleFixed(2) + "\n$" + totalProCost.toLocaleFixed(2) + "\n$" + aftRepValue.toLocaleFixed(2)
       + "\n\n$" + downPay.toLocaleFixed(2) + "\n$" + loanAmount.toLocaleFixed(2) + "\n" + amortYears + " years\n" + loanRate.toLocaleFixed(2) + "%\n$" + monthPI.toLocaleFixed(2);

@@ -195,6 +195,15 @@
             </div>
           </div>
           <div class="flexItem">
+            <div class="label">Annual Community Fees</div>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input class="form-control" id="annualCommFee" onclick="resetInput(this.id)">
+            </div>
+          </div>
+          <div class="flexItem">
             <div class="label">Monthly Insurance</div>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -249,6 +258,15 @@
                 <span class="input-group-text">%</span>
               </div>
               <input class="form-control" id="manageFee" onclick="resetInput(this.id)">
+            </div>
+          </div>
+          <div class="flexItem">
+            <div class="label">Capital Expenditures</div>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text">%</span>
+              </div>
+              <input class="form-control" id="capitalExp" onclick="resetInput(this.id)">
             </div>
           </div>
         </div>
@@ -323,7 +341,7 @@
             </div>
             <div class="flexItem">
               <div class="label4" id="resNOI"></div>
-              <div class="label5">NOI</div>
+              <div class="label5">ANNUAL NOI</div>
             </div>
             <div class="flexItem">
               <div class="label4" id="restotalCashNeed"></div>
