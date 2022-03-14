@@ -155,6 +155,7 @@ window.onload = function() {
         let toNegExp = Math.pow((loanMonthRate+1), (-monthNum));
         let oneMinusNegExp = 1 - toNegExp;
         monthPI = (loanMonthRate/oneMinusNegExp) * loanAmount;
+        if (isNaN(monthPI)) monthPI = 0;
         document.getElementById("resMonthPI").innerHTML = "$" + monthPI.toLocaleFixed(2);
         totalCashNeed = purchCloseCost + estRepCost + downPay;
         document.getElementById("restotalCashNeed").innerHTML = "$" + totalCashNeed.toLocaleFixed(2);
