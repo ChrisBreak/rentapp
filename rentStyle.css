@@ -5,6 +5,7 @@ body {
 .topBar {
   text-align: center;
   font-size: 24px;
+  font-weight: bold;
   font-family: arial narrow, sans-serif, serif;
   color: #004466;
   margin-bottom: 25px;
@@ -23,6 +24,7 @@ body {
   font-family: arial narrow, sans-serif, serif;
   color: #004466;
   font-size: 20px;
+  font-weight: bold;
   margin-bottom: 10px;
   margin-top: 20px;
 }
@@ -88,7 +90,7 @@ progress {
 }
 
 progress::-webkit-progress-value {
-  background: #28a745;
+  background: #198754;
   border-radius: 6px;
 }
 
@@ -135,7 +137,7 @@ th {
   display: none;
 }
 
-@media (min-width: 580px) {
+@media (min-width: 620px) {
 
   .topBar{
     font-size: 30px;
@@ -173,7 +175,7 @@ th {
 
 }
 
-@media (min-width: 740px) {
+@media (min-width: 800px) {
 
   .flexItem, .flexItem2 {
     width: 165px;
@@ -213,15 +215,5 @@ th {
   #pdfFrame {
     height: 800px;
   }
-
-}
-
-@media (min-width: 900px) {
-
-
-}
-
-@media (min-width: 1200px) {
-
 
 }

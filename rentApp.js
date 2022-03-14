@@ -1,6 +1,6 @@
 let pages = ["proInfo", "purchInfo", "rentInfo", "results"];
 let nextButton, backButton, pdfButton, currentP, proBar, pdfFrame, downTrigger;
-let reptitle, proAddress, proCity, proProvince, proAnnualTaxes;
+let reptitle = "Property Report", proAddress, proCity, proProvince, proAnnualTaxes, fullAddress = "";
 let purchPrice, aftRepValue, purchCloseCost, estRepCost, downPercent, loanRate, amortYears, totalProCost, downPay, loanAmount;
 let grossMonthRent, otherMonthIn, electrExp, waterNSewExp, garbageExp, condoFeeExp, monthInsurExp, monthOtherExp, monthProTax, vacancyPer, repNMainPer, manageFee, annualCommFee, capitalExp;
 let monthPI, monthIn, monthCash, noi, cashROI, monthExp, proForma, totalCashNeed, capRate;
@@ -14,9 +14,10 @@ function changePage(page) {
   }
   document.getElementById(page).style.display = "block";
   currentP = page;
-  document.getElementById(page+"Bar").style.color = "#28a745";
+  document.getElementById(page+"Bar").style.color = "#198754";
+  document.getElementById(page+"Bar").style.fontWeight = "bold";
 
-  if (document.body.clientWidth > 580) {
+  if (document.body.clientWidth > 620) {
     if (page === "proInfo") proBar.value = 22;
     else if (page === "purchInfo") proBar.value = 48;
     else if (page === "rentInfo") proBar.value = 72;
@@ -57,7 +58,7 @@ window.onload = function() {
 
   nextButton.onclick = function() {
     if (currentP === "proInfo") {
-      reptitle = document.getElementById("reptitle").value;
+      if (document.getElementById("reptitle").value != "") reptitle = document.getElementById("reptitle").value;
       proAddress = document.getElementById("proAddress").value;
       proCity = document.getElementById("proCity").value;
       proProvince = document.getElementById("proProvince").value;
@@ -127,7 +128,16 @@ window.onload = function() {
         pdfButton.style.display = "inline-block";
 
         document.getElementById("resTitle").innerHTML = reptitle;
-        document.getElementById("resAddress").innerHTML = proAddress + ", " + proCity + ", " + proProvince;
+        if (proAddress != "") fullAddress = proAddress;
+        if (proCity != "") {
+          if (fullAddress != "") fullAddress = fullAddress + ", " + proCity;
+          else fullAddress = proCity;
+        }
+        if (proProvince != "") {
+          if (fullAddress != "") fullAddress = fullAddress + ", " + proProvince;
+          else fullAddress = proProvince;
+        }
+        document.getElementById("resAddress").innerHTML = fullAddress;
         document.getElementById("resPurchPrice").innerHTML = "$" + purchPrice.toLocaleString();
         document.getElementById("resPurchCloseCost").innerHTML = "$" + purchCloseCost.toLocaleFixed(2);
         document.getElementById("resEstRepCost").innerHTML = "$" + estRepCost.toLocaleFixed(2);
@@ -153,16 +163,21 @@ window.onload = function() {
         let fixedExp = electrExp + waterNSewExp + garbageExp + condoFeeExp + monthInsurExp + monthOtherExp + monthProTax + (annualCommFee/12);
         let varExp = ((vacancyPer/100) * grossMonthRent) + ((repNMainPer/100) * grossMonthRent) + ((manageFee/100) * grossMonthRent) + ((capitalExp/100) * grossMonthRent);
         monthExp = monthPI + fixedExp + varExp;
+        if (isNaN(monthExp)) monthExp = 0;
         document.getElementById("resMonthExp").innerHTML = "$" + monthExp.toLocaleFixed(2);
         monthCash = monthIn - monthExp;
         document.getElementById("resMonthCash").innerHTML = "$" + monthCash.toLocaleFixed(2);
         noi = (monthIn - monthExp + monthPI) * 12;
+        if (isNaN(noi)) noi = 0;
         document.getElementById("resNOI").innerHTML = "$" + noi.toLocaleFixed(2);
         proForma = (noi/aftRepValue)*100;
+        if (isNaN(proForma)) proForma = 0;
         document.getElementById("resProForma").innerHTML = proForma.toLocaleFixed(2) + "%";
         cashROI = ((monthCash * 12) / totalCashNeed) * 100;
+        if (isNaN(cashROI)) cashROI = 0;
         document.getElementById("resCashROI").innerHTML = cashROI.toLocaleFixed(2) + "%";
         capRate = (noi / purchPrice) * 100;
+        if (isNaN(capRate)) capRate = 0;
         document.getElementById("resCapRate").innerHTML = capRate.toLocaleFixed(2) + "%";
       }
     }
@@ -175,15 +190,18 @@ window.onload = function() {
       pdfButton.style.display = "none";
       pdfFrame.style.display = "none";
       document.getElementById("resultsBar").style.color = "#696969";
+      document.getElementById("resultsBar").style.fontWeight = "normal";
     }
     else if (currentP === "rentInfo") {
       changePage("purchInfo");
       document.getElementById("rentInfoBar").style.color = "#696969";
+      document.getElementById("rentInfoBar").style.fontWeight = "normal";
     }
     else if (currentP === "purchInfo") {
       changePage("proInfo");
       backButton.style.display = "none";
       document.getElementById("purchInfoBar").style.color = "#696969";
+      document.getElementById("purchInfoBar").style.fontWeight = "normal";
     }
   }
 
@@ -194,7 +212,7 @@ window.onload = function() {
 
     // draw some text
     doc.fontSize(24).fillColor("#004466").text(reptitle, 60, 60);
-    doc.fontSize(14).font('Helvetica-Oblique').text((proAddress + ", " + proCity + ", " + proProvince), 70, 115);
+    doc.fontSize(14).font('Helvetica-Oblique').text((fullAddress), 70, 115);
 
     let labels = "Purchase Closing Costs \nEstimated Repairs \nTotal Project Cost \nAfter Repair Value \n\nDownpayment \nLoan Amount \nAmortized Over \nLoan Interest Rate \nMonthly P&I";
     let allCaps1 = "MONTHLY INCOME \nMONTHLY CASHFLOW \nANNUAL NOI \nCASH ON CASH ROI";
@@ -225,7 +243,7 @@ window.onload = function() {
       let blob = stream.toBlob('application/pdf');
       let url = window.URL.createObjectURL(blob);
 
-      if (document.body.clientWidth < 580) {
+      if (document.body.clientWidth < 620) {
         pdfFrame.src = stream.toBlobURL('application/pdf');
         pdfFrame.style.display = "inline-block";
       }
