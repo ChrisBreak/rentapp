@@ -1,10 +1,10 @@
 let pages = ["proInfo", "purchInfo", "rentInfo", "results"];
 let nextButton, backButton, pdfButton, currentP, proBar, pdfFrame, downTrigger;
-let reptitle = "Property Report", proAddress, proCity, proProvince, proAnnualTaxes, fullAddress = "";
-let purchPrice, aftRepValue, purchCloseCost, estRepCost, downPercent, loanRate, amortYears, totalProCost, downPay, loanAmount;
+let reptitle, proAddress, proCity, proProvince, proAnnualTaxes, proBorrow, fullAddress = "";
+let purchPrice, aftRepValue, purchCloseCost, estRepCost, purchOtherCost, downPercent, loanRate, otherLender, amortYears, totalProCost, downPay, loanAmount;
 let grossMonthRent, otherMonthIn, electrExp, waterNSewExp, garbageExp, condoFeeExp, monthInsurExp, monthOtherExp, monthProTax, vacancyPer, repNMainPer, manageFee, annualCommFee, capitalExp;
 let monthPI, monthIn, monthCash, noi, cashROI, monthExp, proForma, totalCashNeed, capRate;
-let purchNums = ["purchPrice", "aftRepValue", "purchCloseCost", "estRepCost", "downPercent", "loanRate", "amortYears"];
+let purchNums = ["purchPrice", "aftRepValue", "purchCloseCost", "estRepCost", "purchOtherCost", "downPercent", "loanRate", "otherLender", "amortYears"];
 let rentNums = ["grossMonthRent", "otherMonthIn", "electrExp", "waterNSewExp", "garbageExp", "condoFeeExp", "monthInsurExp", "monthOtherExp", "vacancyPer", "repNMainPer", "manageFee", "annualCommFee", "capitalExp"];
 
 function changePage(page) {
@@ -58,15 +58,31 @@ window.onload = function() {
 
   nextButton.onclick = function() {
     if (currentP === "proInfo") {
-      if (document.getElementById("reptitle").value != "") reptitle = document.getElementById("reptitle").value;
+      if (document.getElementById("reptitle").value == "") reptitle = "Property Report";
+      else reptitle = document.getElementById("reptitle").value;
       proAddress = document.getElementById("proAddress").value;
       proCity = document.getElementById("proCity").value;
       proProvince = document.getElementById("proProvince").value;
       proAnnualTaxes = +document.getElementById("proAnnualTaxes").value;
+      proBorrow = document.getElementById("proBorrow").value;
       if (!isNaN(proAnnualTaxes)) {
         changePage("purchInfo");
         backButton.style.display = "inline-block";
         resetInput(currentRed);
+        if (proBorrow == "No") {
+          document.getElementById("downPercent").value = 100;
+          document.getElementById("downPercent").readOnly = true;
+          document.getElementById("loanRate").readOnly = true;
+          document.getElementById("otherLender").readOnly = true;
+          document.getElementById("amortYears").readOnly = true;
+        }
+        else {
+          document.getElementById("downPercent").value = "";
+          document.getElementById("downPercent").readOnly = false;
+          document.getElementById("loanRate").readOnly = false;
+          document.getElementById("otherLender").readOnly = false;
+          document.getElementById("amortYears").readOnly = false;
+        }
       }
       else {
         document.getElementById("proAnnualTaxes").style.borderColor = "red";
@@ -77,10 +93,11 @@ window.onload = function() {
       aftRepValue = +document.getElementById("aftRepValue").value;
       purchCloseCost = +document.getElementById("purchCloseCost").value;
       estRepCost = +document.getElementById("estRepCost").value;
+      purchOtherCost = +document.getElementById("purchOtherCost").value;
       downPercent = +document.getElementById("downPercent").value;
       loanRate = +document.getElementById("loanRate").value;
       amortYears = +document.getElementById("amortYears").value;
-
+      otherLender = +document.getElementById("otherLender").value;
       var wrongInput = false;
       for (var i = 0; i < purchNums.length; i++) {
         if (isNaN(+document.getElementById(purchNums[i]).value)) {
@@ -146,7 +163,7 @@ window.onload = function() {
         document.getElementById("resAftRepValue").innerHTML = "$" + aftRepValue.toLocaleFixed(2);
         downPay = (purchPrice * (downPercent/100));
         document.getElementById("resDownpay").innerHTML = "$" + downPay.toLocaleFixed(2);
-        loanAmount = (purchPrice-downPay);
+        loanAmount = (purchPrice-downPay+otherLender);
         document.getElementById("resLoanAmount").innerHTML = "$" + loanAmount.toLocaleFixed(2);
         document.getElementById("resAmortYears").innerHTML = amortYears + " years";
         document.getElementById("resLoanRate").innerHTML = loanRate.toLocaleFixed(2) + "%";
@@ -157,7 +174,7 @@ window.onload = function() {
         monthPI = (loanMonthRate/oneMinusNegExp) * loanAmount;
         if (isNaN(monthPI)) monthPI = 0;
         document.getElementById("resMonthPI").innerHTML = "$" + monthPI.toLocaleFixed(2);
-        totalCashNeed = purchCloseCost + estRepCost + downPay;
+        totalCashNeed = purchCloseCost + estRepCost + downPay + purchOtherCost;
         document.getElementById("restotalCashNeed").innerHTML = "$" + totalCashNeed.toLocaleFixed(2);
         monthIn = grossMonthRent+otherMonthIn;
         document.getElementById("resMonthIn").innerHTML = "$" + monthIn.toLocaleFixed(2);
